@@ -1,200 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Bliss</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo"><i class="fas fa-hotel"></i> Hotel Bliss</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#rooms">Rooms</a></li>
-                <li><a href="#book">Book Now</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        </nav>
-    </header>
-
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <div class="container">
-            <h1>Welcome to Hotel Bliss</h1>
-            <p>A sanctuary of luxury and tranquility awaits you.</p>
-            <a href="#book" class="cta-button"><i class="fas fa-calendar-check"></i> Book Your Stay</a>
-        </div>
-    </section>
-
-    <!-- Rooms Section -->
-    <section id="rooms" class="section">
-        <div class="container">
-            <h2>Our Exquisite Rooms</h2>
-            <p class="section-subtitle">Discover the perfect room for your stay.</p>
-            <div class="room-grid">
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop" alt="Single Room">
-                        <a href="#single-room-details" class="room-overlay" onclick="openModal('single-room-modal'); return false;">Explore</a>
-                    </div>
-                    <div class="room-details">
-                        <h3>Single Room</h3>
-                        <p class="price">$80/night</p>
-                        <p class="review"><i class="fas fa-star"></i> "Perfect solo retreat!" - Jane D.</p>
-                    </div>
+<!-- Book Now Section -->
+<section id="book" class="section">
+    <div class="container">
+        <h2>Reserve Your Stay</h2>
+        <p class="section-subtitle">Book your perfect getaway today.</p>
+        <!-- Add Availability Check Here -->
+        <div class="availability-check">
+            <h3>Check Room Availability</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="avail-check-in">Check-In</label>
+                    <input type="date" id="avail-check-in" required>
                 </div>
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2070&auto=format&fit=crop" alt="Double Room">
-                        <a href="#double-room-details" class="room-overlay" onclick="openModal('double-room-modal'); return false;">Explore</a>
-                    </div>
-                    <div class="room-details">
-                        <h3>Double Room</h3>
-                        <p class="price">$120/night</p>
-                        <p class="review"><i class="fas fa-star"></i> "Romantic and spacious." - Mark S.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="avail-check-out">Check-Out</label>
+                    <input type="date" id="avail-check-out" required>
                 </div>
-                <div class="room-card">
-                    <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2070&auto=format&fit=crop" alt="Suite">
-                        <a href="#suite-details" class="room-overlay" onclick="openModal('suite-modal'); return false;">Explore</a>
-                    </div>
-                    <div class="room-details">
-                        <h3>Suite</h3>
-                        <p class="price">$200/night</p>
-                        <p class="review"><i class="fas fa-star"></i> "Ultimate luxury!" - Emily R.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="avail-room-type">Room Type</label>
+                    <select id="avail-room-type" required>
+                        <option value="">Select Room Type</option>
+                        <option value="single">Single Room</option>
+                        <option value="double">Double Room</option>
+                        <option value="suite">Suite</option>
+                    </select>
                 </div>
             </div>
+            <button id="check-availability" class="submit-btn"><i class="fas fa-search"></i> Check Availability</button>
+            <div id="availability-result"></div>
         </div>
-    </section>
-
-    <!-- Room Modals -->
-    <div id="single-room-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('single-room-modal')">×</span>
-            <h3>Single Room</h3>
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop" alt="Single Room">
-            <p>A cozy room perfect for solo travelers, featuring a comfortable single bed, modern amenities, and a private bathroom.</p>
-            <p><strong>Price:</strong> $80/night</p>
-            <a href="#book" class="cta-button">Book Now</a>
-        </div>
-    </div>
-
-    <div id="double-room-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('double-room-modal')">×</span>
-            <h3>Double Room</h3>
-            <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2070&auto=format&fit=crop" alt="Double Room">
-            <p>A spacious room with a double bed, ideal for couples, featuring a seating area and stunning views.</p>
-            <p><strong>Price:</strong> $120/night</p>
-            <a href="#book" class="cta-button">Book Now</a>
-        </div>
-    </div>
-
-    <div id="suite-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('suite-modal')">×</span>
-            <h3>Suite</h3>
-            <img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2070&auto=format&fit=crop" alt="Suite">
-            <p>Our luxurious suite offers a king-sized bed, separate living area, and premium amenities for an unforgettable stay.</p>
-            <p><strong>Price:</strong> $200/night</p>
-            <a href="#book" class="cta-button">Book Now</a>
-        </div>
-    </div>
-
-    <!-- Book Now Section -->
-    <section id="book" class="section">
-        <div class="container">
-            <h2>Reserve Your Stay</h2>
-            <p class="section-subtitle">Book your perfect getaway today.</p>
-            <form id="booking-form" class="booking-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="check-in">Check-In</label>
-                        <input type="date" id="check-in" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="check-out">Check-Out</label>
-                        <input type="date" id="check-out" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="room-type">Room Type</label>
-                        <select id="room-type" required>
-                            <option value="">Select Room Type</option>
-                            <option value="single">Single Room</option>
-                            <option value="double">Double Room</option>
-                            <option value="suite">Suite</option>
-                        </select>
-                    </div>
+        <!-- Existing Booking Form -->
+        <form id="booking-form" class="booking-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="check-in">Check-In</label>
+                    <input type="date" id="check-in" required>
                 </div>
-                <button type="submit" class="submit-btn"><i class="fas fa-check"></i> Book Now</button>
-            </form>
-            <div id="booking-result"></div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <p class="section-subtitle">We’d love to hear from you! Visit us or send a message.</p>
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +2347033490533</p>
-                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> chapiejr04@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Mahmutbey, Dilmenler Cd. No:26, 34217 Bağcılar/İstanbul</p>
-            </div>
-            <div class="contact-map-form">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.6146146146146!2d28.8473!3d41.0333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabf0a7c5a5b5b%3A0x5e5a5b5a5b5a5b5a!2sMahmutbey%2C%20Dilmenler%20Cd.%20No%3A26%2C%2034217%20Ba%C4%9Fc%C4%B1lar%2F%C4%B0stanbul%2C%20Turkey!5e0!3m2!1sen!2sus!4v1698771234567!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="form-group">
+                    <label for="check-out">Check-Out</label>
+                    <input type="date" id="check-out" required>
                 </div>
-                <div class="contact-form-wrapper">
-                    <h3>Send Us a Message</h3>
-                    <form id="contact-form" class="contact-form">
-                        <div class="contact-form-grid">
-                            <div class="contact-form-group">
-                                <label for="contact-name">Your Name</label>
-                                <input type="text" id="contact-name" placeholder="Your Name" required>
-                            </div>
-                            <div class="contact-form-group">
-                                <label for="contact-email">Your Email</label>
-                                <input type="email" id="contact-email" placeholder="Your Email" required>
-                            </div>
-                            <div class="contact-form-group full-width">
-                                <label for="message">Your Message</label>
-                                <textarea id="message" placeholder="Your Message" required></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="room-type">Room Type</label>
+                    <select id="room-type" required>
+                        <option value="">Select Room Type</option>
+                        <option value="single">Single Room</option>
+                        <option value="double">Double Room</option>
+                        <option value="suite">Suite</option>
+                    </select>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 Hotel Bliss. Designed with <i class="fas fa-heart"></i> for your comfort.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <button type="submit" class="submit-btn"><i class="fas fa-check"></i> Book Now</button>
+        </form>
+        <div id="booking-result"></div>
+    </div>
+</section>
