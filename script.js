@@ -1,90 +1,88 @@
-// Toggle mobile menu
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // Booking Data
+    const bookedDates = {
+        single: [
+            { start: new Date('2025-04-05'), end: new Date('2025-04-10') },
+            { start: new Date('2025-04-15'), end: new Date('2025-04-20') }
+        ],
+        double: [
+            { start: new Date('2025-04-07'), end: new Date('2025-04-12') }
+        ],
+        suite: [
+            { start: new Date('2025-04-10'), end: new Date('2025-04-15') },
+            { start: new Date('2025-04-22'), end: new Date('2025-04-25') }
+        ]
+    };
 
-// Booking form submission (mock)
-document.getElementById('booking-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const checkIn = document.getElementById('check-in').value;
-    const checkOut = document.getElementById('check-out').value;
-    const userName = document.getElementById('name').value; // Get the user's name
-    const result = document.getElementById('booking-result');
+    // Navigation
+    document.querySelectorAll('.nav-item, .logo').forEach(item => {
+        item.addEventListener('click', () => {
+            const sectionId = item.getAttribute('data-section') || 'home';
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
 
-    if (new Date(checkIn) >= new Date(checkOut)) {
-        result.innerHTML = '<p style="color: red;">Check-out date must be after check-in date.</p>';
-    } else {
-        result.innerHTML = `<p style="color: green;">Booking submitted successfully, ${userName}! </p>`;
-    }
-});
+    // Book Form
+    const bookForm = document.getElementById('book-form');
+    const bookMsg = document.getElementById('book-msg');
 
-// Contact form submission (mock)
-document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Message sent successfully! (This is a demo)');
-});
+    bookForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        bookMsg.textContent = '';
 
-// Modal functions for room details
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-}
+        const roomType = document.getElementById('room-type').value;
+        const checkin = new Date(document.getElementById('checkin').value);
+        const checkout = new Date(document.getElementById('checkout').value);
+        const guests = parseInt(document.getElementById('guests').value);
 
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-}
-
-// Close modal when clicking outside of it
-window.addEventListener('click', (event) => {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+        if (!roomType || isNaN(checkin) || isNaN(checkout) || !guests || guests < 1) {
+            bookMsg.textContent = 'Please fill all fields correctly.';
+            bookMsg.style.color = 'red';
+            return;
         }
-    });
-});
 
-// Mock availability data (in a real app, this would come from a server)
-const roomAvailability = {
-    single: [
-        { start: "2025-04-01", end: "2025-04-05" },
-        { start: "2025-04-10", end: "2025-04-15" }
-    ],
-    double: [
-        { start: "2025-04-03", end: "2025-04-07" }
-    ],
-    suite: [
-        { start: "2025-04-05", end: "2025-04-12" }
-    ]
-};
+        if (checkout <= checkin) {
+            bookMsg.textContent = 'Checkout must be after checkin.';
+            bookMsg.style.color = 'red';
+            return;
+        }
 
-// Check Availability
-document.getElementById('check-availability').addEventListener('click', (e) => {
-    e.preventDefault();
-    const checkIn = document.getElementById('avail-check-in').value;
-    const checkOut = document.getElementById('avail-check-out').value;
-    const roomType = document.getElementById('avail-room-type').value;
-    const result = document.getElementById('availability-result');
+        const isBooked = bookedDates[roomType].some(booking => 
+            checkin < booking.end && checkout > booking.start
+        );
 
-    if (!checkIn || !checkOut || !roomType) {
-        result.innerHTML = '<p style="color: red;">Please fill in all fields.</p>';
-        return;
-    }
-
-    if (new Date(checkIn) >= new Date(checkOut)) {
-        result.innerHTML = '<p style="color: red;">Check-out date must be after check-in date.</p>';
-        return;
-    }
-
-    const bookedPeriods = roomAvailability[roomType] || [];
-    const isAvailable = !bookedPeriods.some(period => {
-        const bookedStart = new Date(period.start);
-        const bookedEnd = new Date(period.end);
-        const requestedStart = new Date(checkIn);
-        const requestedEnd = new Date(checkOut);
-        return (requestedStart <= bookedEnd && requestedEnd >= bookedStart);
+        bookMsg.textContent = isBooked 
+            ? `Sorry, ${roomType} room is not available.` 
+            : `${roomType.charAt(0).toUpperCase() + roomType.slice(1)} room is available!`;
+        bookMsg.style.color = isBooked ? 'red' : 'green';
     });
 
-    result.innerHTML = isAvailable
-        ? `<p style="color: green;">${roomType.charAt(0).toUpperCase() + roomType.slice(1)} Room is available for your dates!</p>`
-        : `<p style="color: red;">Sorry, ${roomType.charAt(0).toUpperCase() + roomType.slice(1)} Room is not available for your dates.</p>`;
+    // Contact Form
+    const contactForm = document.getElementById('contact-form');
+    const contactMsg = document.getElementById('contact-msg');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        contactMsg.textContent = '';
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) {
+            contactMsg.textContent = 'Please fill all fields.';
+            contactMsg.style.color = 'red';
+            return;
+        }
+
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            contactMsg.textContent = 'Please enter a valid email.';
+            contactMsg.style.color = 'red';
+            return;
+        }
+
+        contactMsg.textContent = `Message sent! Thank you, ${name}.`;
+        contactMsg.style.color = 'green';
+        contactForm.reset();
+    });
 });
