@@ -63,6 +63,15 @@
                 <button type="submit">Check Availability</button>
                 <div id="book-msg"></div>
             </form>
+            <form id="payment-form" style="display: none;">
+                <h3>Payment Details</h3>
+                <input type="text" id="cardholder-name" placeholder="Cardholder Name" required>
+                <input type="text" id="card-number" placeholder="Card Number" required>
+                <input type="text" id="expiry" placeholder="MM/YY" required>
+                <input type="text" id="cvv" placeholder="CVV" required>
+                <button type="submit">Confirm Payment</button>
+                <div id="payment-msg"></div>
+            </form>
         </section>
 
         <section id="contact" class="section">
