@@ -5,14 +5,14 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Clean, modern sans-serif */
-    color: #2f2f2f; /* Dark gray for readability */
-    background: #f8f1e9; /* Soft cream background */
+    font-family: 'Roboto', sans-serif;
+    color: #2f2f2f;
+    background: #f8f1e9;
     line-height: 1.6;
 }
 
 header {
-    background: #3a2e2e; /* Deep espresso brown */
+    background: #3a2e2e;
     padding: 1.5rem;
     position: fixed;
     width: 100%;
@@ -30,8 +30,8 @@ header {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif; /* Elegant serif for branding */
-    color: #d9b382; /* Warm gold */
+    font-family: 'Playfair Display', serif;
+    color: #d9b382;
     font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
@@ -44,7 +44,7 @@ nav {
 
 .nav-item {
     font-family: 'Roboto', sans-serif;
-    color: #f5e6cc; /* Creamy off-white */
+    color: #f5e6cc;
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -53,7 +53,7 @@ nav {
 }
 
 .nav-item:hover, .logo:hover {
-    color: #e8c7a0; /* Lighter gold hover */
+    color: #e8c7a0;
 }
 
 main {
@@ -65,7 +65,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
-    background: #fff; /* Crisp white for professionalism */
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
@@ -75,12 +75,12 @@ h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #3a2e2e; /* Deep espresso brown */
+    color: #3a2e2e;
 }
 
 p {
     font-size: 1.1rem;
-    color: #5a5a5a; /* Medium gray for contrast */
+    color: #5a5a5a;
 }
 
 .home-image {
@@ -101,7 +101,7 @@ p {
 }
 
 .room-card {
-    background: #f8f1e9; /* Soft cream */
+    background: #f8f1e9;
     padding: 1.5rem;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -124,11 +124,11 @@ p {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: #3a2e2e; /* Deep espresso brown */
+    color: #3a2e2e;
 }
 
-#book-form, #contact-form {
-    background: #f8f1e9; /* Soft cream */
+#book-form, #payment-form, #contact-form {
+    background: #f8f1e9;
     padding: 2rem;
     border-radius: 10px;
     max-width: 500px;
@@ -136,22 +136,29 @@ p {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+#payment-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #3a2e2e;
+}
+
 input, select, textarea, button {
     display: block;
     width: 100%;
     padding: 0.9rem;
     margin: 0.75rem 0;
-    border: 1px solid #d9b382; /* Warm gold border */
+    border: 1px solid #d9b382;
     border-radius: 6px;
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
-    background: #fff; /* White input background */
-    color: #2f2f2f; /* Dark gray text */
+    background: #fff;
+    color: #2f2f2f;
     transition: border-color 0.3s ease;
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #3a2e2e; /* Deep espresso brown */
+    border-color: #3a2e2e;
     outline: none;
 }
 
@@ -161,8 +168,8 @@ textarea {
 }
 
 button {
-    background: #3a2e2e; /* Deep espresso brown */
-    color: #f5e6cc; /* Creamy off-white */
+    background: #3a2e2e;
+    color: #f5e6cc;
     border: none;
     cursor: pointer;
     font-weight: 400;
@@ -172,14 +179,14 @@ button {
 }
 
 button:hover {
-    background: #d9b382; /* Warm gold */
+    background: #d9b382;
 }
 
-#book-msg, #contact-msg {
+#book-msg, #payment-msg, #contact-msg {
     margin-top: 1rem;
     font-size: 1rem;
     padding: 0.5rem;
-    color: #5a5a5a; /* Medium gray */
+    color: #5a5a5a;
 }
 
 .contact-container {
@@ -203,8 +210,8 @@ button:hover {
 }
 
 footer {
-    background: #3a2e2e; /* Deep espresso brown */
-    color: #f5e6cc; /* Creamy off-white */
+    background: #3a2e2e;
+    color: #f5e6cc;
     text-align: center;
     padding: 1.5rem;
     font-size: 0.9rem;
